@@ -1,0 +1,11 @@
+version: "3.5"
+services:
+  github-runner:
+    container_name: auto-scalable-github-runner
+    restart: always
+    security_opt:
+      # needed on SELinux systems to allow docker container to manage other docker containers
+      - label:disable
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/tmp/runner:/tmp/runner"
